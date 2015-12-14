@@ -22,6 +22,11 @@ npm install --save redux-fetch-action
     - `?OPTIONS`: `Object`
         - It's should be the valid second argument of [fetch](https://github.com/github/fetch).
 
+- `handleFetchAction`: `function(ACTION_NAME, HANDLER)`
+    - `ACTION_NAME`: `String`
+    - `HANDLER`: `Object` or `Function`
+        - If `Object` is given, it should contain `request`, `receive` and `error` properties.
+        - If `Function` given, it is used to handle above three actions.
 
 # Usage
 
@@ -29,7 +34,21 @@ npm install --save redux-fetch-action
 import { createFetchAction } from 'redux-fetch-action';
 
 const FETCH = 'FETCH';
+
 const fetchAction = createFetchAction(FETCH, '/data.json');
+
+const fetchReducer = handleFetchAction(FETCH, {
+  request: (data = {}, action) => {
+    return data;
+  },
+  receive: (data = {}, action) => {
+    return action.payload;
+  },
+  error: (data = {}, action) => {
+    console.log(action.payload);
+    return data;
+  }
+});
 ```
 
 Full example is below.
@@ -54,33 +73,31 @@ createServer((request, response)  => {
 const FETCH1 = 'FETCH1';
 const FETCH2 = 'FETCH2';
 
-const reducer1 = handleAction(FETCH1, {
-  next: (posts = [], action) => {
-    if (action.meta && action.meta.status === 'OK') {
-      console.log('RECEIVED 1');
-      return action.payload.posts;
-    } else {
+const reducer1 = handleFetchAction(FETCH1, {
+  request: (posts = [], action) => {
       console.log('REQUEST 1');
       return posts;
-    }
   },
-  throw: (posts = [], action) => {
+  receive: (posts = [], action) => {
+    console.log('RECEIVED 1');
+    return action.payload.posts;
+  },
+  error: (posts = [], action) => {
     console.log('ERROR 1');
     return posts; 
   }
 });
 
-const reducer2 = handleAction(FETCH2, {
-  next: (posts = [], action) => {
-    if (action.meta && action.meta.status === 'OK') {
-      console.log('RECEIVED 2');
-      return action.payload.posts;
-    } else {
+const reducer2 = handleFetchAction(FETCH2, {
+  request: (posts = [], action) => {
       console.log('REQUEST 2');
       return posts;
-    }
   },
-  throw: (posts = [], action) => {
+  receive: (posts = [], action) => {
+    console.log('RECEIVED 2');
+    return action.payload.posts;
+  },
+  error: (posts = [], action) => {
     console.log('ERROR 2');
     return posts; 
   }

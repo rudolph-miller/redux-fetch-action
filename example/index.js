@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { handleActions, handleAction } from 'redux-actions';
-import { createFetchAction } from 'redux-fetch-action';
+import { handleActions } from 'redux-actions';
+import { createFetchAction, handleFetchAction } from 'redux-fetch-action';
 import { Server }from 'node-static';
 import { createServer } from 'http';
 
@@ -16,33 +16,31 @@ createServer((request, response)  => {
 const FETCH1 = 'FETCH1';
 const FETCH2 = 'FETCH2';
 
-const reducer1 = handleAction(FETCH1, {
-  next: (posts = [], action) => {
-    if (action.meta && action.meta.status === 'OK') {
-      console.log('RECEIVED 1');
-      return action.payload.posts;
-    } else {
+const reducer1 = handleFetchAction(FETCH1, {
+  request: (posts = [], action) => {
       console.log('REQUEST 1');
       return posts;
-    }
   },
-  throw: (posts = [], action) => {
+  receive: (posts = [], action) => {
+    console.log('RECEIVED 1');
+    return action.payload.posts;
+  },
+  error: (posts = [], action) => {
     console.log('ERROR 1');
     return posts; 
   }
 });
 
-const reducer2 = handleAction(FETCH2, {
-  next: (posts = [], action) => {
-    if (action.meta && action.meta.status === 'OK') {
-      console.log('RECEIVED 2');
-      return action.payload.posts;
-    } else {
+const reducer2 = handleFetchAction(FETCH2, {
+  request: (posts = [], action) => {
       console.log('REQUEST 2');
       return posts;
-    }
   },
-  throw: (posts = [], action) => {
+  receive: (posts = [], action) => {
+    console.log('RECEIVED 2');
+    return action.payload.posts;
+  },
+  error: (posts = [], action) => {
     console.log('ERROR 2');
     return posts; 
   }
