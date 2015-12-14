@@ -6,11 +6,13 @@ Fetch Action utilities for [Redux](https://github.com/rackt/redux).
 It uses [redux-actions](https://github.com/acdlite/redux-actions) to create action,
 and you can wraps a reducer so that only handles Flux Standard Actions of a certain type with `handleAction` API of [redux-actions](https://github.com/acdlite/redux-actions).
 
+
 # Install
 
 ```sh
 npm install --save redux-fetch-action
 ```
+
 
 # API
 
@@ -19,6 +21,8 @@ npm install --save redux-fetch-action
     - `URL`: `String`
     - `?OPTIONS`: `Object`
         - It's should be the valid second argument of [fetch](https://github.com/github/fetch).
+
+
 # Usage
 
 ```js
@@ -104,6 +108,7 @@ ERROR 2
 RECEIVED 1
 */
 ```
+
 
 # See Also
 
