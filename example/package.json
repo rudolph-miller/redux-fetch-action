@@ -1,0 +1,14 @@
+{
+  "name": "redux-fetch-action-example",
+  "version": "0.0.1",
+  "description": "Example of Redux Fetch Action",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rudolph-Miller",
+  "license": "MIT",
+  "dependencies": {
+    "redux-fetch-action": "file:.."
+  }
+}

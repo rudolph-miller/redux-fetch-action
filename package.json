@@ -1,0 +1,33 @@
+{
+  "name": "redux-fetch-action",
+  "version": "0.0.1",
+  "description": "Fetch Action utilities for Redux.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "node_modules/.bin/babel src --out-dir lib",
+    "watch": "node_modules/.bin/babel src --out-dir lib --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rudolph-Miller/redux-fetch-action.git"
+  },
+  "keywords": [
+    "Redux",
+    "Fetch",
+    "Flux"
+  ],
+  "author": "Rudolph-Miller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rudolph-Miller/redux-fetch-action/issues"
+  },
+  "homepage": "https://github.com/Rudolph-Miller/redux-fetch-action#readme",
+  "devDependencies": {
+    "babel-cli": "^6.3.17"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.0",
+    "redux-actions": "^0.9.0"
+  }
+}
