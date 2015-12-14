@@ -1,5 +1,7 @@
 # Redux Fetch Action
 
+[![npm version](https://badge.fury.io/js/redux-fetch-action.svg)](https://badge.fury.io/js/redux-fetch-action)
+
 Fetch Action utilities for [Redux](https://github.com/rackt/redux).
 It uses [redux-actions](https://github.com/acdlite/redux-actions) to create action,
 and you can wraps a reducer so that only handles Flux Standard Actions of a certain type with `handleAction` API of [redux-actions](https://github.com/acdlite/redux-actions).
