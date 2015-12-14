@@ -4,11 +4,18 @@
   "description": "Example of Redux Fetch Action",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/babel-node index.js"
   },
   "author": "Rudolph-Miller",
   "license": "MIT",
   "dependencies": {
-    "redux-fetch-action": "file:.."
+    "node-static": "^0.7.7",
+    "redux": "^3.0.5",
+    "redux-actions": "^0.9.0",
+    "redux-fetch-action": "file:..",
+    "redux-thunk": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17"
   }
 }
