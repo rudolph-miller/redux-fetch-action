@@ -10,13 +10,25 @@ export function createFetchAction(name, url, options) {
     return dispatch => {
       dispatch(createAction(name)());
       return fetch(url, options).then(response => {
-        return response.json();
-      }).then(json => {
+        if (response.status >= 200 && response.status < 300) {
+          return response;
+        } else {
+          const error = new Error(response.statusText);
+          error.response = response;
+          throw error;
+        }
+      }).then(response => {
+        if (/json/.test(response.headers.get('Content-Type'))) {
+          return response.json();
+        } else {
+          return response.text();
+        }
+      }).then(object => {
         dispatch(createAction(name, identity, () => {
           return {
             status: 'OK'
           };
-        })(json));
+        })(object));
       }).catch(e => {
         dispatch(createAction(name)(e));
       });

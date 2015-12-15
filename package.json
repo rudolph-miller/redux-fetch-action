@@ -1,6 +1,6 @@
 {
   "name": "redux-fetch-action",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fetch Action utilities for Redux.",
   "main": "lib/index.js",
   "scripts": {
