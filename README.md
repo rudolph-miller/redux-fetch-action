@@ -26,6 +26,7 @@ npm install --save redux-fetch-action
     - `ACTION_NAME`: `String`
     - `HANDLER`: `Object` or `Function`
         - If `Object` is given, it should contain `request`, `receive` and `error` properties.
+            - If not specified, it behaves like `(state, action) => { return state; }`.
         - If `Function` given, it is used to handle above three actions.
 
 # Usage
